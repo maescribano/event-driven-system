@@ -5,9 +5,11 @@
   Contains docker config to run and scale kafka cluster elements as docker containers.
 
 ######  Prerequisites
-- Install docker, docker-compose and docker-machine
-- Create a docker-machine "kafka" as docker containers host
-
+- Install docker, docker-compose and docker-machine(including virtualbox)
+- Create a docker-machine "kafka" as docker containers host running the following command:
+```
+  $> docker-machine create --driver virtualbox kafka
+```
 
 Running Kafka cluster with default bootstrap properties
 
