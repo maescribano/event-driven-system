@@ -41,14 +41,35 @@ Stop and remove cluster containers
 ##### Steps:
 
 1. Start kafka cluster as we describe in docker section
-```
-$> docker-compose up -d
-```
 
-3. Start event consumer application.
-```
-```
+  ```
+  $> docker-compose up -d
+  ```
+2. Start event consumer application.
 
-4. Start event producer application.
-```
-```
+  ```
+  $> cd event-consumer
+  $> mvn install
+  $> java -jar target/event-consumer-0.0.1-SNAPSHOT.jar
+
+  ```
+
+3. Start event producer application.
+
+  ```
+  $> cd event-producer
+  $> mvn install
+  $> java -jar target/event-producer-0.0.1-SNAPSHOT.jar
+  ```
+4. Testing producer endpoint via the following curl command:
+
+  ```
+  curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{"prueba":"contenido"}' "http://localhost:9080/message"
+  ```
+
+5. Now you can check consumer logs to verify that it's writing the received messages.
+
+  ```
+  2017-02-08 18:55:03.622  INFO 32553 --- [afka-consumer-1] o.s.k.l.KafkaMessageListenerContainer    : partitions assigned:[]
+  {"prueba":"contenido"}
+  ```
