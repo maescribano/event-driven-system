@@ -23,7 +23,7 @@ import com.poc.events.producer.service.impl.MessageProducerServiceKafkaImpl;
 
 @Configuration
 @EnableKafka
-public class KafkaConfig {
+public class KafkaProducerConfig {
 
 	
 	@Autowired
